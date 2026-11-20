@@ -45,7 +45,7 @@ test/
 
 Las pruebas de `test/` se escribieron **antes** que el código. Al correr `flutter test` con `lib/` todavía vacía, nada compila:
 
-![Rojo: las pruebas no compilan](capturas/01_rojo_no_compila.png)
+![Rojo: las pruebas no compilan](captura/01_rojo_no_compila.png)
 
 ### 2. ❌ Error real atrapado por una prueba
 
@@ -60,7 +60,7 @@ Con una fila como `[2, 4, null, null]` los dos huecos se consideran "iguales" y 
 *"fusionarFila con huecos al final no intenta fusionar los huecos"* y *"una fila ya en su posición final"* lo atraparon
 (`Null check operator used on a null value`):
 
-![Error atrapado por la prueba](capturas/02_error.png)
+![Error atrapado por la prueba](captura/02_error.png)
 
 **Corrección:**
 
@@ -74,19 +74,19 @@ if (resultado[i] != null && resultado[i] == resultado[i + 1]) {   // ✅
 `flutter analyze` señaló avisos en la pantalla copiada del manual (concatenación de textos con `+` y
 `withOpacity`, que ya está obsoleto en Flutter 3.27+):
 
-![Analyze con avisos](capturas/03_analyze_avisos.png)
+![Analyze con avisos](captura/03_analyze_avisos.png)
 
 Se corrigieron y se volvió a analizar:
 
-![Analyze limpio](capturas/04_analyze_limpio.png)
+![Analyze limpio](captura/04_analyze_limpio.png)
 
 ### 4. 🟢 VERDE — las 32 pruebas pasan
 
-![Verde: todas las pruebas pasan](capturas/05_verde_pruebas.png)
+![Verde: todas las pruebas pasan](captura/05_verde_pruebas.png)
 
 ### 5. 📦 Compilación del APK
 
-![Compilación del APK](capturas/06_build_apk.png)
+![Compilación del APK](captura/06_build_apk.png)
 
 ---
 
