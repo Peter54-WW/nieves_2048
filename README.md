@@ -25,7 +25,7 @@ El APK es para teléfonos **arm64** (prácticamente todos los Android de los úl
 
 ## 🏗️ Estructura
 
-```
+```text
 lib/
 ├── logica/         motor_2048 (una fila) · grid (4x4) · motor_juego (partida) · sabores · direccion · estado_juego
 ├── presentation/   juego_screen.dart  (gestos de deslizar + fichas con degradado)
@@ -43,9 +43,7 @@ test/
 
 ### 1. 🔴 ROJO — las pruebas se escriben primero y fallan
 
-Las pruebas de `test/` se escribieron **antes** que el código. Al correr `flutter test` con `lib/` todavía vacía, nada compila:
-
-![Rojo: las pruebas no compilan](captura/01_rojo_no_compila.png)
+Las pruebas de `test/` se escribieron **antes** que el código. Al correr `flutter test` con `lib/` todavía vacía, nada compila.
 
 ### 2. ❌ Error real atrapado por una prueba
 
@@ -58,9 +56,7 @@ if (resultado[i] == resultado[i + 1]) {          // ❌ null == null también "e
 
 Con una fila como `[2, 4, null, null]` los dos huecos se consideran "iguales" y `null! * 2` revienta. Las pruebas
 *"fusionarFila con huecos al final no intenta fusionar los huecos"* y *"una fila ya en su posición final"* lo atraparon
-(`Null check operator used on a null value`):
-
-![Error atrapado por la prueba](captura/02_error.png)
+(`Null check operator used on a null value`).
 
 **Corrección:**
 
@@ -72,21 +68,17 @@ if (resultado[i] != null && resultado[i] == resultado[i + 1]) {   // ✅
 ### 3. 🔵 REFACTOR — limpiar sin romper nada
 
 `flutter analyze` señaló avisos en la pantalla copiada del manual (concatenación de textos con `+` y
-`withOpacity`, que ya está obsoleto en Flutter 3.27+):
+`withOpacity`, que ya está obsoleto en Flutter 3.27+).
 
-![Analyze con avisos](captura/03_analyze_avisos.png)
-
-Se corrigieron y se volvió a analizar:
-
-![Analyze limpio](captura/04_analyze_limpio.png)
+Se corrigieron y se volvió a analizar hasta dejar `flutter analyze` limpio.
 
 ### 4. 🟢 VERDE — las 32 pruebas pasan
 
-![Verde: todas las pruebas pasan](captura/05_verde_pruebas.png)
+Las 32 pruebas del proyecto pasan tras completar el ciclo de desarrollo y correcciones.
 
 ### 5. 📦 Compilación del APK
 
-![Compilación del APK](captura/06_build_apk.png)
+El APK de liberación se compila en modo `release` para `android-arm64`.
 
 ---
 
@@ -143,4 +135,3 @@ flutter test
 ```bash
 flutter run
 ```
-
